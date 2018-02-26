@@ -1,0 +1,1 @@
+The mean number of individuals detected per species per VCP count, and the frequency of detections at the plot and cluster for each species at `r tempreport$Park` in `r tolower(tempreport$Habitat)` reported below.

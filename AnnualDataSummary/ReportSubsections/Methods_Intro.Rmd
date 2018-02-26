@@ -1,0 +1,60 @@
+##Sampling Frame
+A sampling frame is the area within which we randomly locate our monitoring sites, and hence, the area to which statistical inferences can be made based on monitoring data. We derived the sampling frames for vegetation and bird community monitoring at `r tempreport$ParkName` from maps of ecological sites developed by the U.S. Natural Resources Conservation Service (NRCS; See Appendix A of DeCoster et al. 2012). Ecological sites are landscape divisions with characteristic soils, hydrology, plant communities, and disturbance regimes and responses, and are based on soil survey data (Butler et al. 2003). 
+When we developed the sampling frame, a soil survey update had recently been completed for the monument (Hibner 2000), but ecological site data were not updated. So, in 2007, as the integrated upland protocol (De-Coster et al. 2012) was being developed SCPN created initial soil-based sampling frames that consisted of those soil units most strongly correlated with the occurrence of `r tolower(tempreport$Habitat)` vegetation. The initial soil-based draft sampling frame was overlain with a draft vegetation map (published as Muldavin et al. 2010), and we identified soils that were well correlated with `r tolower(tempreport$Habitat)` vegetation. These comprised the `r tempreport$Habitat` ecological site, which is henceforth referred to as `r tolower(tempreport$Habitat)` habitat.  
+
+To complete the bird community monitoring sampling frame, we modified the map of the sampling frame using Geographical Information System (GIS) technology to eliminate
+
+* areas that were not within the target habitat (roads, buildings, and infrastructure)
+*	areas that were expected to differ substantially from the norm for the target habitat, such as areas that have experienced fire of moderate to high burn severity, because these areas would have increased ecological variation, making it more difficult to detect trends
+*	areas with slopes ???30% to prevent erosion from occurring as a result of the field work  
+
+We created a set of spatially distributed sampling plots in a simple grid sampling design. `r tempreport$Park` staff reviewed the sampling plots and rejected those plots that landed in the proximity of archeological sites. Next, the bird monitoring crew evaluated the accessibility of each plot in the field and rejected those that were deemed inaccessible. Sites were rejected as inaccessible if  
+
+1. they required greater than 2 hours travelling time (by car and foot) from an access point
+2. they did not constitute a group of 9 to 10 plots that could be accessed and sampled within a single morning. 
+
+The crew then assessed each sampling plot to ensure that it  
+
+1. it fell within the target habitat, 
+2. had a slope of less than 30%, and 
+3. did not contain a major disturbance. 
+
+Any plots that did not meet these criteria were rejected. We need to decide what other relevant infomation needs to be presented, and put it into a presentable format.
+
+##Field Methods
+
+At each sampling plot, we conducted a VCP count, noting all birds seen or heard during an 8-minute sampling period, regardless of the distance from the observer. We recorded (1) the species, (2) method of detection, (3) gender (if known), and (4) distance from the sampling plot center to the individual bird. Distances were estimated to the nearest meter using a laser range finder. During a single morning, one technician conducted approximately ten VCP counts.
+We conducted habitat sampling on a 50 m radius macroplot centered on a VCP sampling plot, and in four sub-plots within the macroplot. First, for the macroplot, we estimated and recorded the area occupied by vegetation and other land cover types, if present. For the four subplots, we recorded foliar vegetation cover by functional group (e.g. forbs, shrubs), canopy closure, and tree and snag density and basal area. We measured basal area using a Cruz-All (a type of angle gauge), and canopy closure using a spherical densiometer. Ocular estimates of foliar cover were made using a modified Braun-Blanquet cover class scale.
+
+##Data Summary Methods
+
+###Variable Circular Plots
+
+We summarized the following data for the target `r tolower(tempreport$Habitat)` habitat at `r tempreport$Park`. The sample unit for bird data is the VCP.
+
+*	Observed species richness (unadjusted for detectability) is the number of species detected within a given area and specified time.
+*	Mean number of individuals detected for each species is reported as the average number of individuals de-tected per 8-minute VCP count. To calculate mean number of individuals detected for each species in mixed conifer habitat with a simple grid sampling design, the data for all plots are averaged across the 3 survey periods, and a mean number of individuals detected and standard deviation are calculated for the target habitat. Detectability-based density estimates are not reported here, but they will be derived for multi- year trend reports.
+*	Frequency is the proportion of plots in which each species was detected. To calculate species frequency, we calculated the proportion of plots in the target habitat in which the species was detected. For example, if a particular species was detected on 28 of the 48 plots in the target habitat, during one, two, or all visits to that plot, the proportion of plots occupied in the target habitat would be 0.58 (58%).
+
+###Habitat Data
+
+We will use habitat data and bird sampling data to examine bird-habitat relationships. Habitat data were collected within a circular 0.8 ha macroplot which contained four subplots and was centered on each bird sampling plot. Data were summarized at two levels: the macroplot and the target habitat. The means and standard deviations for the target habitat were calculated from the macroplot data.
+
+####Vegetation Cover Types
+
+We classified vegetation into 5 cover types for the `r tempreport$Park` `r tolower(tempreport$Habitat)` habitat as shown in the table below.. For each vegetation type we calculated
+
+*	mean percent cover for each vegetation type and other land cover types in the target habitat (using the cover class midpoints) and standard deviation
+*	frequency, the number of macroplots where a specific cover type had been recorded, as a proportion of the total number of macroplots
+
+####Basal Area
+
+We calculated tree basal area (m2/ha) for each species, and basal area for all snags. We calculated mean basal area for the macroplot, and mean basal area and standard deviation for the target habitat.
+
+####Sapling Density
+
+We calculated density (stems/ha) for each species and size class, and for all species within a size class. We calculated mean density for the macroplot, and mean species density and standard deviation for the target habitat.
+
+####Foliar Cover of Functional Groups
+
+We calculated the mean foliar cover for each functional group for the macro plot, using the cover class midpoints, and then the mean and standard deviation for the target habitat.

@@ -1,0 +1,133 @@
+---
+author:
+output:
+  html_document:
+    css: style.css
+    includes:
+      in_header: scpn-header.html
+    number_sections: no
+    theme: journal
+    toc: yes
+    toc_float:
+      collapsed: yes
+params:
+  set_subtitle: My SubTitle
+  set_title: My Title
+---
+---
+title:  |
+  | **Bird Community Monitoring Data Summary Report**
+  | `r paste(tempreport$EventYear, "Annual Data Summary")`
+subtitle: |
+  | `r paste(tempreport$ParkName, " : ", tempreport$Habitat)`
+---
+
+
+```{r, out.width = "800px", fig.align='center', echo=FALSE, message=FALSE, warning = FALSE}
+knitr::include_graphics(paste0("EcoSiteImages\\", tempreport$EcoSiteImage, ".JPG"))
+```
+
+
+#**Introduction and Background**
+```{r loadintroductionandbackground, child="ReportSubsections\\Introduction&Background.Rmd", echo=FALSE, message=FALSE, warning = FALSE}
+```
+
+####Southern Colorado Plateau Inventory and Monitoring Network
+```{r network, echo=FALSE, message=FALSE, warning = FALSE, fig.align='center'}
+scpn_map <- leaflet() %>%
+  addProviderTiles(providers$MapBox,
+                   options = providerTileOptions(
+                     detectRetina = TRUE,
+                     # id and accessToken are Mapbox specific options
+                     id = 'nps.397cfb9a,nps.3cf3d4ab,nps.b0add3e6' , group='NPMap',
+                     accessToken = 'pk.eyJ1IjoibnBzIiwiYSI6IkdfeS1OY1UifQ.K8Qn5ojTw4RV1GwBlsci-Q'
+                   )
+  ) %>%
+  addScaleBar(position = "bottomleft") %>%
+  addPolygons(data=scpnboundary, weight = 2, color = "black") %>%
+  addCircleMarkers(radius = 5, data=tempparkcenter, color = "red", weight = 2, stroke=FALSE, opacity = 1, fillOpacity=0.5)
+
+scpn_map
+```
+
+
+#**Methods**
+```{r loadfieldmethodsintro, child="ReportSubsections\\Methods_Intro.Rmd", echo=FALSE, message=FALSE, warning = FALSE}
+``` 
+*<font color = "gray", size = "2">See the bird protocol for more detailed explanation of the field methods 
+https://science.nature.nps.gov/im/units/scpn/monitor/birds.cfm</font>*
+
+
+#**Data Summary**
+```{r loadbirdresults, child="ReportSubsections\\Results_BirdCommunity.Rmd", echo=FALSE, message=FALSE, warning = FALSE}
+```
+
+```{r loaddetection, child="ReportSubsections\\Results_VCPDetect&Proportion.Rmd", echo=FALSE, message=FALSE, warning = FALSE, eval=tempreport$ReportVCP}
+```
+
+```{r vcpdetection, echo=FALSE, message=FALSE, warning = FALSE, fig.width = 10, fig.height = 9, eval=tempreport$ReportVCP}
+vcpdetectiontable()
+```
+
+```{r loadmeanandfreq, child="ReportSubsections\\Results_VCPMean&Frequency.Rmd", echo=FALSE, message=FALSE, warning = FALSE, eval=tempreport$ReportVCP}
+```
+
+```{r vcpmeanandfreq, echo=FALSE, message=FALSE, warning = FALSE, fig.width = 10, fig.height = 9, eval=tempreport$ReportVCP}
+vcpmeanandfreqtable()
+```
+
+```{r loadhabitatresults, child="ReportSubsections\\Results_Habitat.Rmd", echo=FALSE, message=FALSE, warning = FALSE}
+```
+
+```{r loadfunctionalgroup, child="ReportSubsections\\Results_FunctionalGroup.Rmd", echo=FALSE, message=FALSE, warning = FALSE, eval=tempreport$ReportUnderstory}
+```
+
+```{r functionalgroupplot, echo=FALSE, message=FALSE, warning = FALSE, fig.width = 10, fig.height = 9, eval=tempreport$ReportUnderstory}
+functionalgroupplot()
+```
+
+#Data Requests
+
+The data used to generate this annual data summary is available from SCPN. Please submit a detailed request through the Project Manager, [Jennifer Holmes](mailto:jennifer.holmes@nau.eduv), or the current project contact at the bottom of the <a href="https://science.nature.nps.gov/im/units/scpn/monitor/birds.cfm">SCPN Bird Project</a> webpage.
+
+#Disclaimer
+
+The National Park Service shall not be held liable for improper or incorrect use of the data described and/or contained herein. These data and related graphics are not legal documents and are not intended to be used as such. The information contained in these data is dynamic and may change over time. The data are not better than the original sources from which they were derived. It is the responsibility of the data user to use the data appropriately and consistent within the limitations of geospatial data in general and these data in particular. Any related graphics are intended to aid the data user in acquiring relevant data; it is not appropriate to use the related graphics as data. The National Park Service gives no warranty, expressed or implied, as to the accuracy, reliability, or completeness of these data. It is strongly recommended that these data are directly acquired from an NPS server and not indirectly through other sources which may have changed the data in some way. Although these data have been processed successfully on computer systems at the National Park Service, no warranty expressed or implied is made regarding the utility of the data on other systems for general or scientific purposes, nor shall the act of distribution constitute any such warranty. This disclaimer applies both to individual use of the data and aggregate use with other data.
+
+#References
+
+  Baptiste Auguie (2017). gridExtra: Miscellaneous Functions for "Grid" Graphics. R package version 2.3. https://CRAN.R-project.org/package=gridExtra
+  
+  Roger Bivand, Tim Keitt and Barry Rowlingson (2017). rgdal: Bindings for the 'Geospatial' Data Abstraction Library. R package version 1.2-15. https://CRAN.R-project.org/package=rgdal
+  
+  Butler, L. D., J. B. Cooper, R. H. Johnson, A. J. Norman, G. L. Peacock, P. L. Shaver, and K. E. Spaeth. 2003. National range and pasture handbook. U.S. Department of Agriculture, Natural Resource Conservation Service, Grazing Lands Technology Institute, Fort Worth, Texas.
+
+  Joe Cheng, Bhaskar Karambelkar and Yihui Xie (2017). leaflet: Create Interactive Web Maps with the JavaScript 'Leaflet' Library. R package version 1.1.0. https://CRAN.R-project.org/package=leaflet
+  
+  DeCoster, J. K., C. L. Lauver, M. E. Miller, J. R. Norris, A. E. C. Snyder, M. C. Swan, L. P. Thomas, and D. L. Witwicki. 2012. Integrated upland monitoring protocol for the Southern Colorado Plateau Network. Natural Resource Report NPS/SCPN/NRR-2012/577. National Park Service, Fort Collins, Colorado.
+  
+  Holmes, J. A. 2007. SCPN habitat-based bird community monitoring program: trends, power analyses, and sample sizes. Unpublished report available from the National Park Service, Southern Colorado Plateau Network, Flagstaff, Arizona.
+  
+  Holmes, J. A., M. J. Johnson, C. L. Lauver, J. R. Norris, A. E. C. Snyder, and L. P. Thomas. 2015. Habitat-based bird community monitoring protocol for the Southern Colorado Plateau Network. National Resources Report NPS/SCPN/NRR-2015/1041. National Park Service, Fort Collins, Colorado.
+  
+  Brian Ripley and Michael Lapsley (2017). RODBC: ODBC Database Access. R package version 1.3-15. https://CRAN.R-project.org/package=RODBC
+    
+  Simon Urbanek (2013). png: Read and write PNG images. R package version 0.1-7. https://CRAN.R-project.org/package=png
+    
+  Ramnath Vaidyanathan, Yihui Xie, JJ Allaire, Joe Cheng and Kenton Russell (2017). htmlwidgets: HTML Widgets for R. R package version 0.9. https://CRAN.R-project.org/package=htmlwidgets
+  
+  Hadley Wickham, Romain Francois, Lionel Henry and Kirill Müller (2017). dplyr: A Grammar of Data Manipulation. R package version 0.7.4. https://CRAN.R-project.org/package=dplyr
+  
+  H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2009.
+
+  Hadley Wickham (2017). stringr: Simple, Consistent Wrappers for Common String Operations. R package version 1.2.0. https://CRAN.R-project.org/package=stringr
+
+  Hadley Wickham and Lionel Henry (2017). tidyr: Easily Tidy Data with 'spread()' and 'gather()' Functions. R package version 0.7.2. https://CRAN.R-project.org/package=tidyr
+  
+  Yihui Xie (2016). DT: A Wrapper of the JavaScript Library 'DataTables'. R package version 0.2. https://CRAN.R-project.org/package=DT
+  
+--------------------------------------------------
+`r paste("Integrated Upland Vegetation and Soils Monitoring Annual Report for", tempreport$EventYear)`
+`r paste(tempreport$ParkName, " : ", tempreport$Habitat)`  
+
+*<font color = "gray">Compiled on `r Sys.time()` by `r Sys.info()['user']` using `r R.Version()$version.string` </font>*

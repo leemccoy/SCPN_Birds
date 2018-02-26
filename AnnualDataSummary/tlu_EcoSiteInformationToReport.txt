@@ -1,0 +1,4 @@
+ID|Park|ParkName|Habitat|EventYear|Report|Clustered|ReportVCP|ReportBurn|ReportVegCover|ReportSnags|ReportTrees|ReportUnderstory|EcoSiteImage
+1|GRCA|Grand Canyon National Park|Pinyon-Juniper|2017|1|1|1|1|1|1|1|1|GRCA_P_2017
+2|GRCA|Grand Canyon National Park|Mixed Conifer|2017|1|1|1|1|1|1|1|1|GRCA_M_2017
+3|WUPA|Wupatki National Monument|Grassland|2017|1|0|1|1|1|1|1|1|WUPA_G_2017
